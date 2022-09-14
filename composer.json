@@ -1,0 +1,16 @@
+{
+    "name": "user/scandi-web",
+    "autoload": {
+        "psr-4": {
+            "base\\" : "vendor/base",
+            "app\\" : "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "RivGames",
+            "email": "Igorryd7@gmail.com"
+        }
+    ],
+    "require": {}
+}
