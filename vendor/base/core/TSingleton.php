@@ -4,7 +4,7 @@ namespace base\core;
 
 trait TSingleton
 {
-    protected static object $instance;
+    protected static $instance;
 
     public static function getInstance()
     {

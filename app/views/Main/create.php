@@ -11,30 +11,35 @@
     </ul>
 </header>
 <form class="form-control-sm" id="product_form" method="POST" action="/addproduct">
-    <div class="mb-3 mx-5 col-xs-2">
-        <label class="form-label" for="sku">SKU</label>
-        <input type="text" class="form-control" id="sku" name="sku">
-    </div>
-    <div class="mb-3 mx-5 col-xs-2">
-        <label class="form-label" for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name">
-    </div>
-    <div class="mb-3 mx-5 col-xs-2">
-        <label class="form-label" for="price">Price($)</label>
-        <input type="number" class="form-control" id="price" name="price">
-    </div>
-    <div class="mb-3 mx-5 col-xs-2">
-        <label class="form-label" for="productType">Type Switcher</label>
-        <select name="productType" class="form-select" id="productType">
-            <option value="">Type Switcher</option>
-            <option value="dvd" id="DVD">DVD</option>
-            <option value="furniture" id="Furniture">Furniture</option>
-            <option value="book" id="Book">Book</option>
-        </select>
-    </div>
-    <div class="mb-3 mx-5" id="place">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="mb-3 mx-5 col-xs-2">
+                <label class="form-label" for="sku">SKU</label>
+                <input type="text" class="form-control" id="sku" name="sku">
+            </div>
+            <div class="mb-3 mx-5 col-xs-2">
+                <label class="form-label" for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="mb-3 mx-5 col-xs-2">
+                <label class="form-label" for="price">Price($)</label>
+                <input type="number" class="form-control" id="price" name="price">
+            </div>
+            <div class="mb-3 mx-5 col-xs-2">
+                <label class="form-label" for="productType">Type Switcher</label>
+                <select name="productType" class="form-select" id="productType">
+                    <option value="">Type Switcher</option>
+                    <option value="dvd" id="DVD">DVD</option>
+                    <option value="furniture" id="Furniture">Furniture</option>
+                    <option value="book" id="Book">Book</option>
+                </select>
+            </div>
+            <div class="mb-3 mx-5" id="place">
 
+            </div>
+        </div>
     </div>
+
 </form>
 <script>
     let productType = document.querySelector('#productType');

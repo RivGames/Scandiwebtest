@@ -19,7 +19,7 @@ class ProductFactory
                 $factory = new DVDFactory();
                 break;
             default:
-                throw new \Exception('this type is undefined');
+                throw new \Exception('Этот тип не определен');
         }
         return $factory;
     }

@@ -2,11 +2,9 @@
 
 namespace base\core;
 
-
-namespace phpmvc\core\base;
-
 //use Valitron\Validator;
 use base\core\Db;
+
 abstract class Model
 {
     protected object $pdo;
@@ -15,6 +13,7 @@ abstract class Model
     public array $attributes = [];
     public array $errors = [];
     public array $rules = [];
+
     public function __construct()
     {
         $this->pdo = Db::getInstance();
@@ -51,13 +50,27 @@ abstract class Model
 //        $_SESSION['error'] = $errors;
 //    }
 
-    public function save($table)
+//    public function save($table)
+//    {
+////        $tbl = $this->query($table);
+//        $tbl = $this
+//        foreach ($this->attributes as $name => $value) {
+//            $tbl->$name = $value;
+//        }
+//
+////        return \R::store($tbl);
+//    }
+    public function insertIntoMany($data)
     {
-        $tbl = \R::dispense($table);
-        foreach ($this->attributes as $name => $value){
-            $tbl->$name = $value;
-        }
-        return \R::store($tbl);
+        $sql = ("INSERT INTO products (name,sku,price,weight,size,height,width,length) 
+                VALUES (:name, :sku, :price, :weight, :size, :height, :width, :lenght)");
+//        $st = $this->pdo->prepare($sql);
+//        foreach ($this->attributes as $name => $value) {
+//            $st->bindValue(":{$name}", $value, PDO::PARAM_INT);
+//        }
+//        $st = $this->pdo->bindValue($this->attributes);
+//        $this->pdo->execute($st);
+        $this->pdo->bindValue($sql,$this->attributes);
     }
 
     public function query($sql)
