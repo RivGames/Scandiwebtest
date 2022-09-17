@@ -9,7 +9,7 @@ class BookFactory implements ProductFactoryInterface
 {
     public function fill($data): Book
     {
-        return new Book($data['sku'],$data['name'],$data['price'],$data['weight']);
+        return (new Book)->setSku($data['sku'])->setName($data['name'])->setPrice($data['price'])->setWeight($data['weight']);
     }
 
 }

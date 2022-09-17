@@ -5,30 +5,83 @@
     </a>
     <ul class="nav nav-pills">
         <li class="nav-item"><a href="/addproduct" class="nav-link active">ADD</a></li>
-        <form action="delete" method="POST">
-            <button type="submit" class="btn btn-danger">MASS DELETE</button>
-        </form>
+        <button form="delete_form" type="submit" class="btn btn-danger" id="delete_product_btn">MASS DELETE</button>
     </ul>
 </header>
-<div class="card col-sm-2 mx-5">
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+<div class="container">
+    <div class="row">
+        <?php foreach ($dvds as $dvd): ?>
+            <div class="card col-sm-2 mx-5 mb-4">
+                <div class="form-check">
+                        <input class="delete-checkbox" type="checkbox" name="id" value="<?= $dvd['id'] ?>">
+<!--                        <input type="hidden">-->
+<!--                        <form action="" id="delete_form" method="POST">-->
+<!--                            <input class="form-check-input" type="checkbox" name="id" value="--><?//= $dvd['id'] ?><!--"-->
+<!--                                   id="flexCheckDefault">-->
+<!--                        </form>-->
+                </div>
+                <div class="card-body text-center">
+                    <?= $dvd['name'] ?>
+                    <br>
+                    <?= $dvd['sku'] ?>
+                    <br>
+                    <?= $dvd['price'] ?> $
+                    <br>
+                    Size:<?= $dvd['size'] ?> MB
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
-    <div class="card-body text-center">
-        <?php foreach ($products as $product): ?>
-            <?= $product['name'] ?>
-            <br>
-            <?= $product['sku'] ?>
-            <br>
-            <?= $product['price'] ?> $
-            <br>
-            Weight:<?= $product['weight'] ?>KG
-            <br>
-            Size:<?= $product['size'] ?> MB
-            <br>
-            <?= $product['height'] ?>x
-            <?= $product['width'] ?>x
-            <?= $product['length'] ?>
+</div>
+<div class="container">
+    <div class="row">
+        <?php foreach ($books as $book): ?>
+            <div class="card col-sm-2 mx-5 mb-4">
+                <div class="form-check">
+                    <div class="delete-checkbox">
+                        <form action="" id="delete_form" method="POST">
+                            <input class="form-check-input" type="checkbox" name="id" value="<?= $book['id'] ?>"
+                                   id="flexCheckDefault">
+                        </form>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <?= $book['name'] ?>
+                    <br>
+                    <?= $book['sku'] ?>
+                    <br>
+                    <?= $book['price'] ?> $
+                    <br>
+                    Weight:<?= $book['weight'] ?>KG
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <?php foreach ($furniture as $item): ?>
+            <div class="card col-sm-2 mx-5 mb-4">
+                <div class="form-check">
+                    <div class="delete-checkbox">
+                        <form action="" id="delete_form" method="POST">
+                            <input class="form-check-input" type="checkbox" name="id" value="<?= $item['id'] ?>"
+                                   id="flexCheckDefault">
+                        </form>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <?= $item['name'] ?>
+                    <br>
+                    <?= $item['sku'] ?>
+                    <br>
+                    <?= $item['price'] ?> $
+                    <br>
+                    <?= $item['height'] ?>x
+                    <?= $item['width'] ?>x
+                    <?= $item['length'] ?>
+                </div>
+            </div>
         <?php endforeach; ?>
     </div>
 </div>

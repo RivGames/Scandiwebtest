@@ -4,13 +4,15 @@ namespace base\core;
 
 use base\core\TSingleton;
 use PDOStatement;
-//use PDO;
+use PDO;
+
 class Db
 {
     use TSingleton;
 
     protected object $pdo;
     protected object $pdos;
+
     public function __construct()
     {
         $db = require ROOT . '/config/config_db.php';
@@ -20,6 +22,7 @@ class Db
         ];
         $this->pdo = new \PDO($db['dsn'], $db['user'], $db['pass'], $options);
     }
+
     public function execute($sql, $params = [])
     {
         $stmt = $this->pdo->prepare($sql);
@@ -31,13 +34,20 @@ class Db
         return $this->pdo->prepare($sql);
     }
 
-    public function bindValue($sql,$data)
+    public function bindValue($sql, $data)
     {
         $st = $this->pdo->prepare($sql);
         foreach($data as $name => $value){
-            $st->bindValue(":{$name}",$value,PDO::PARAM_INT);
+            $st->bindValue($name,$value,);
         }
-        $this->execute($st);
+        $st->execute();
+    }
+
+    public function bindParam($sql,$data,$param)
+    {
+        $st = $this->pdo->prepare($sql);
+        $st->bindParam($param,$data,PDO::PARAM_INT);
+        $st->execute();
     }
     public function query($sql, $params = [])
     {

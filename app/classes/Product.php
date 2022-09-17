@@ -3,15 +3,38 @@
 namespace app\classes;
 abstract class Product
 {
-    protected string $sku;
     protected string $name;
+    protected string $sku;
     protected float $price;
 
-    public function __construct($sku, $name, $price)
+    public function setSku(string $sku)
     {
-        $this->sku = $sku;
-        $this->name = $name;
-        $this->price = $price;
+        if (strlen($sku) > 3) {
+            $this->sku = $sku;
+        } else {
+            $this->sku = md5('he' . rand(1,10));
+        }
+        return $this;
+    }
+
+    public function setName(string $name)
+    {
+        if (strlen($name) >= 2) {
+            $this->name = $name;
+        } else {
+            $this->name = md5('h' . rand(1,10));
+        }
+        return $this;
+    }
+
+    public function setPrice($price)
+    {
+        if ($price >= 1) {
+            $this->price = $price;
+        } else {
+            $this->price = rand(1,100);
+        }
+        return $this;
     }
 
     public function getPrice(): float
@@ -19,7 +42,7 @@ abstract class Product
         return $this->price;
     }
 
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -28,4 +51,6 @@ abstract class Product
     {
         return $this->sku;
     }
+
+    abstract public function getData();
 }

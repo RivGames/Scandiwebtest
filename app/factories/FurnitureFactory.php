@@ -9,6 +9,12 @@ class FurnitureFactory implements ProductFactoryInterface
 {
     public function fill($data): Furniture
     {
-        return new Furniture($data['sku'],$data['name'],$data['price'],$data['height'],$data['width'],$data['length']);
+        return (new Furniture())
+            ->setSku($data['sku'])
+            ->setName($data['name'])
+            ->setPrice($data['price'])
+            ->setHeight($data['height'])
+            ->setWidth($data['width'])
+            ->setLength($data['length']);
     }
 }

@@ -9,6 +9,10 @@ class DVDFactory implements ProductFactoryInterface
 {
     public function fill($data): DVD
     {
-        return new DVD($data['sku'],$data['name'],$data['price'],$data['size']);
+        return (new DVD())
+            ->setSku($data['sku'])
+            ->setName($data['name'])
+            ->setPrice($data['price'])
+            ->setSize($data['size']);
     }
 }

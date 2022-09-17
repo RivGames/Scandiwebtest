@@ -52,7 +52,7 @@ abstract class Model
 
 //    public function save($table)
 //    {
-////        $tbl = $this->query($table);
+//        $tbl = $this->query($table);
 //        $tbl = $this
 //        foreach ($this->attributes as $name => $value) {
 //            $tbl->$name = $value;
@@ -60,19 +60,22 @@ abstract class Model
 //
 ////        return \R::store($tbl);
 //    }
-    public function insertIntoMany($data)
+//    public function insertIntoMany($data,$table)
+//    {
+//        $sql = ("INSERT INTO {$table} (name,sku,price,weight,size,height,width,length)
+//                VALUES (:name, :sku, :price, :weight, :size , :height , :width, :length)");
+//        $this->pdo->bindValue($sql, $data);
+//    }
+    public function deleteProduct($id)
     {
-        $sql = ("INSERT INTO products (name,sku,price,weight,size,height,width,length) 
-                VALUES (:name, :sku, :price, :weight, :size, :height, :width, :lenght)");
-//        $st = $this->pdo->prepare($sql);
-//        foreach ($this->attributes as $name => $value) {
-//            $st->bindValue(":{$name}", $value, PDO::PARAM_INT);
-//        }
-//        $st = $this->pdo->bindValue($this->attributes);
-//        $this->pdo->execute($st);
-        $this->pdo->bindValue($sql,$this->attributes);
-    }
+//        $stmt = $this->pdo->prepare($sql);
+//        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+//        $stmt->execute();
+        $sql = "DELETE FROM products WHERE id= :id";
+        $this->pdo->bindParam($sql,$id,':id');
+//        $this->pdo->bindValue($sql,$id);
 
+    }
     public function query($sql)
     {
         return $this->pdo->execute($sql);
@@ -80,7 +83,7 @@ abstract class Model
 
     public function findAll()
     {
-        $sql = "SELECT * FROM {$this->table}";
+        $sql = "SELECT * FROM {$this->table} ";
         return $this->pdo->query($sql);
     }
 

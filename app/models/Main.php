@@ -11,13 +11,18 @@ class Main extends Model
         'sku' => '',
         'name' => '',
         'price' => '',
-        'weight' => '',
-        'height' => '',
-        'width' => '',
-        'length' => '',
+        'weight' => null,
+        'size' => null,
+        'height' => null,
+        'width' => null,
+        'length' => null,
     ];
-//    public function findAll()
+
+//    public function deleteProduct($id)
 //    {
-//        $this->query('SELECT * FROM products WHERE IS');
+//        $sql = "DELETE FROM {$this->table} WHERE id= :id";
+//
+//        $this->pdo->execute()
+//        $this->query("")
 //    }
 }
