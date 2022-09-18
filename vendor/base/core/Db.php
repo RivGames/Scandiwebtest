@@ -11,7 +11,6 @@ class Db
     use TSingleton;
 
     protected object $pdo;
-    protected object $pdos;
 
     public function __construct()
     {
@@ -36,18 +35,18 @@ class Db
 
     public function bindValue($sql, $data)
     {
-        $st = $this->pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         foreach($data as $name => $value){
-            $st->bindValue($name,$value,);
+            $stmt->bindValue($name,$value);
         }
-        $st->execute();
+        $stmt->execute();
     }
 
     public function bindParam($sql,$data,$param)
     {
-        $st = $this->pdo->prepare($sql);
-        $st->bindParam($param,$data,PDO::PARAM_INT);
-        $st->execute();
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam($param,$data,PDO::PARAM_INT);
+        $stmt->execute();
     }
     public function query($sql, $params = [])
     {

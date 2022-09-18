@@ -5,81 +5,37 @@
     </a>
     <ul class="nav nav-pills">
         <li class="nav-item"><a href="/addproduct" class="nav-link active">ADD</a></li>
-        <button form="delete_form" type="submit" class="btn btn-danger" id="delete_product_btn">MASS DELETE</button>
+        <form id="delete" action="/" method="POST">
+            <button type="submit" class="btn btn-danger" id="delete_product_btn">MASS DELETE</button>
+        </form>
     </ul>
 </header>
 <div class="container">
     <div class="row">
-        <?php foreach ($dvds as $dvd): ?>
+        <?php foreach ($products as $product): ?>
             <div class="card col-sm-2 mx-5 mb-4">
                 <div class="form-check">
-                        <input class="delete-checkbox" type="checkbox" name="id" value="<?= $dvd['id'] ?>">
-<!--                        <input type="hidden">-->
-<!--                        <form action="" id="delete_form" method="POST">-->
-<!--                            <input class="form-check-input" type="checkbox" name="id" value="--><?//= $dvd['id'] ?><!--"-->
-<!--                                   id="flexCheckDefault">-->
-<!--                        </form>-->
+                    <!--                        <input type="hidden" class="form-check-input">-->
+                    <input form="delete" class="delete-checkbox" type="checkbox" name="id[]" value="<?= $product['id'] ?>">
                 </div>
                 <div class="card-body text-center">
-                    <?= $dvd['name'] ?>
+                    <?= $product['name'] ?>
                     <br>
-                    <?= $dvd['sku'] ?>
+                    <?= $product['sku'] ?>
                     <br>
-                    <?= $dvd['price'] ?> $
+                    <?= $product['price'] ?> $
                     <br>
-                    Size:<?= $dvd['size'] ?> MB
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <?php foreach ($books as $book): ?>
-            <div class="card col-sm-2 mx-5 mb-4">
-                <div class="form-check">
-                    <div class="delete-checkbox">
-                        <form action="" id="delete_form" method="POST">
-                            <input class="form-check-input" type="checkbox" name="id" value="<?= $book['id'] ?>"
-                                   id="flexCheckDefault">
-                        </form>
-                    </div>
-                </div>
-                <div class="card-body text-center">
-                    <?= $book['name'] ?>
-                    <br>
-                    <?= $book['sku'] ?>
-                    <br>
-                    <?= $book['price'] ?> $
-                    <br>
-                    Weight:<?= $book['weight'] ?>KG
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <?php foreach ($furniture as $item): ?>
-            <div class="card col-sm-2 mx-5 mb-4">
-                <div class="form-check">
-                    <div class="delete-checkbox">
-                        <form action="" id="delete_form" method="POST">
-                            <input class="form-check-input" type="checkbox" name="id" value="<?= $item['id'] ?>"
-                                   id="flexCheckDefault">
-                        </form>
-                    </div>
-                </div>
-                <div class="card-body text-center">
-                    <?= $item['name'] ?>
-                    <br>
-                    <?= $item['sku'] ?>
-                    <br>
-                    <?= $item['price'] ?> $
-                    <br>
-                    <?= $item['height'] ?>x
-                    <?= $item['width'] ?>x
-                    <?= $item['length'] ?>
+                    <?php if ($product['weight'] != 0): ?>
+                        Weight <?= $product['weight'] ?> KG
+                    <?php endif ?>
+                    <?php if ($product['size'] != 0): ?>
+                        <br>
+                        Size <?= $product['size'] ?> MB
+                    <?php endif ?>
+                    <?php if ($product['height'] != 0): ?>
+                        <br>
+                        Dimensions <?= $product['height'] ?>x<?= $product['width'] ?>x<?= $product['length'] ?>
+                    <?php endif ?>
                 </div>
             </div>
         <?php endforeach; ?>

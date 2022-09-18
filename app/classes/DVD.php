@@ -4,8 +4,6 @@ namespace app\classes;
 
 class DVD extends Product
 {
-    private float $size;
-
     public function getSize(): float
     {
         return $this->size;
@@ -26,7 +24,11 @@ class DVD extends Product
             'name' => $this->getName(),
             'sku' => $this->getSku(),
             'price' => $this->getPrice(),
-            'size' => $this->getSku(),
+            'size' => $this->getSize(),
+            'weight' => $this->weight,
+            'height' => $this->height,
+            'width' => $this->weight,
+            'length' => $this->length,
         ];
     }
 

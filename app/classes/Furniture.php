@@ -4,10 +4,6 @@ namespace app\classes;
 
 class Furniture extends Product
 {
-    private int $height;
-    private int $width;
-    private int $length;
-
     public function getHeight(): int
     {
         return $this->height;
@@ -58,6 +54,8 @@ class Furniture extends Product
             'name' => $this->getName(),
             'sku' => $this->getSku(),
             'price' => $this->getPrice(),
+            'size' => $this->size,
+            'weight' => $this->weight,
             'height' => $this->getHeight(),
             'width' => $this->getWidth(),
             'length' => $this->getLength(),

@@ -4,8 +4,6 @@ namespace app\classes;
 
 class Book extends Product
 {
-    private float $weight;
-
     public function setWeight($weight)
     {
         if ($weight > 0) {
@@ -28,6 +26,10 @@ class Book extends Product
             'sku' => $this->getSku(),
             'price' => $this->getPrice(),
             'weight' => $this->getWeight(),
+            'size' => $this->size,
+            'height' => $this->height,
+            'width' => $this->width,
+            'length' => $this->length,
         ];
     }
 }

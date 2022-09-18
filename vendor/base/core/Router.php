@@ -30,7 +30,6 @@ class Router
                 }
                 $route['controller'] = self::upperCamelCase($route['controller']);
                 self::$route = $route;
-//                debug($route);
                 return true;
             }
         }

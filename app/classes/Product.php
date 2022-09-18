@@ -6,6 +6,19 @@ abstract class Product
     protected string $name;
     protected string $sku;
     protected float $price;
+    protected float $weight;
+    protected int $size;
+    protected int $height;
+    protected int $width;
+    protected int $length;
+    public function __construct()
+    {
+        $this->weight = 0.0;
+        $this->size = 0;
+        $this->height = 0;
+        $this->width = 0;
+        $this->length = 0;
+    }
 
     public function setSku(string $sku)
     {
