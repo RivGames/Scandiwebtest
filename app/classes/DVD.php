@@ -16,8 +16,16 @@ class DVD extends Product
         }else{
             $this->size = rand(1,100);
         }
-        return $this;
     }
+
+    public function fill($data)
+    {
+        $this->setName($data['name']);
+        $this->setPrice($data['price']);
+        $this->setSku($data['sku']);
+        $this->setSize($data['size']);
+    }
+
     public function getData(): array
     {
         return[

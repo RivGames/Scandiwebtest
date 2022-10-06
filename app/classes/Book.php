@@ -11,12 +11,19 @@ class Book extends Product
         } else {
             $this->weight = 1;
         }
-        return $this;
     }
 
     public function getWeight(): float
     {
         return $this->weight;
+    }
+
+    public function fill($data)
+    {
+        $this->setName($data['name']);
+        $this->setPrice($data['price']);
+        $this->setSku($data['sku']);
+        $this->setWeight($data['weight']);
     }
 
     public function getData(): array

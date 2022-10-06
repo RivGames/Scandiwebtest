@@ -2,25 +2,21 @@
 
 namespace app\factories;
 
-use app\classes\Product;
-
 class ProductFactory
 {
-    public function getFactory($type): object
+    public function getProductType($productType)
     {
-        switch ($type){
-            case 'book':
-                $factory = new BookFactory();
-                break;
-            case 'furniture':
-                $factory = new FurnitureFactory();
-                break;
-            case 'dvd':
-                $factory = new DVDFactory();
-                break;
-            default:
-                throw new \Exception('Этот тип не определен');
+        $lookupArray = [
+            'book' => 'Book',
+            'dvd' => 'DVD',
+            'furniture' => 'Furniture'
+        ];
+        if( ! array_key_exists($productType, $lookupArray)) {
+            throw new \RuntimeException('Incorrect product type');
         }
-        return $factory;
+
+        $className = "app\\classes\\" . $lookupArray[$productType];
+
+        return ( new $className );
     }
 }

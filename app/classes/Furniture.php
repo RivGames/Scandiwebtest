@@ -26,7 +26,6 @@ class Furniture extends Product
         } else {
             $this->height = rand(1, 100);
         }
-        return $this;
     }
 
     public function setWidth($width)
@@ -36,7 +35,6 @@ class Furniture extends Product
         }else{
             $this->width = rand(1,100);
         }
-        return $this;
     }
 
     public function setLength($length)
@@ -46,8 +44,18 @@ class Furniture extends Product
         }else{
             $this->length = rand(1,100);
         }
-        return $this;
     }
+
+    public function fill($data)
+    {
+        $this->setName($data['name']);
+        $this->setPrice($data['price']);
+        $this->setSku($data['sku']);
+        $this->setHeight($data['height']);
+        $this->setWidth($data['width']);
+        $this->setLength($data['length']);
+    }
+
     public function getData(): array
     {
         return [

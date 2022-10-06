@@ -1,6 +1,7 @@
 <?php
 
 namespace app\classes;
+
 abstract class Product
 {
     protected string $name;
@@ -11,8 +12,12 @@ abstract class Product
     protected int $height;
     protected int $width;
     protected int $length;
+
     public function __construct()
     {
+        $this->name = '';
+        $this->sku = '';
+        $this->price = 0.0;
         $this->weight = 0.0;
         $this->size = 0;
         $this->height = 0;
@@ -25,9 +30,8 @@ abstract class Product
         if (strlen($sku) > 3) {
             $this->sku = $sku;
         } else {
-            $this->sku = md5('he' . rand(1,10));
+            $this->sku = md5('he' . rand(1, 10));
         }
-        return $this;
     }
 
     public function setName(string $name)
@@ -35,9 +39,8 @@ abstract class Product
         if (strlen($name) >= 2) {
             $this->name = $name;
         } else {
-            $this->name = md5('h' . rand(1,10));
+            $this->name = md5('h' . rand(1, 10));
         }
-        return $this;
     }
 
     public function setPrice($price)
@@ -45,9 +48,8 @@ abstract class Product
         if ($price >= 1) {
             $this->price = $price;
         } else {
-            $this->price = rand(1,100);
+            $this->price = rand(1, 100);
         }
-        return $this;
     }
 
     public function getPrice(): float
@@ -64,6 +66,8 @@ abstract class Product
     {
         return $this->sku;
     }
+
+    abstract public function fill($data);
 
     abstract public function getData();
 }

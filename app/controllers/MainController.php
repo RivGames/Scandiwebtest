@@ -30,7 +30,9 @@ class MainController extends Controller
             $data = $_POST;
             $main = new Main();
             $type = $data['productType'];
-            $product = (new ProductFactory())->getFactory($type)->fill($data);
+            $product = (new ProductFactory())->getProductType($type);
+            $product->fill($data);
+            debug($product);
             $main->save($product->getData());
         }
         $this->set(compact('title'));
