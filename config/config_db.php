@@ -2,5 +2,5 @@
 return [
     'dsn' => 'mysql:host=localhost;dbname=scandiweb;',
     'user' => 'root',
-    'pass' => 'root123',
+    'pass' => 'password',
 ];
