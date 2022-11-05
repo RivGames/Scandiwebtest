@@ -58,7 +58,6 @@ class Router
             echo('Страница не найдена');
             die;
         }
-
     }
 
     protected static function upperCamelCase($name): string

@@ -4,7 +4,7 @@
         <span class="fs-4">Product List</span>
     </a>
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="/addproduct" class="nav-link active">ADD</a></li>
+        <li class="nav-item"><a href="addproduct" class="nav-link active">ADD</a></li>
         <form id="delete" action="/" method="POST">
             <button type="submit" class="btn btn-danger" id="delete_product_btn">MASS DELETE</button>
         </form>

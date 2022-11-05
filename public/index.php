@@ -11,7 +11,7 @@ $uri = rtrim($_SERVER['QUERY_STRING'], '/');
 $router = new Router();
 
 Router::add('^$',['controller' => 'Main' ,'action' => 'index']);
-Router::add('^addproduct$',['controller' => 'Main' ,'action' => 'create']);
-Router::add('^delete',['controller' => 'Main' ,'action' => 'delete']);
+Router::add('addproduct',['controller' => 'Main' ,'action' => 'create']);
+Router::add('delete',['controller' => 'Main' ,'action' => 'delete']);
 
 Router::run($uri);
